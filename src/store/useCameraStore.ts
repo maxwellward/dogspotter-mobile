@@ -33,7 +33,6 @@ export const useCameraStore = create<CameraState>()(
 	),
 )
 
-
 const uploadPhoto = async (uri: string) => {
 	if (!pb.authStore.record) return;
 

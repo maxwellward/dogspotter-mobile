@@ -5,13 +5,20 @@ import { useOnForegroundFocus } from "@/hooks/useOnForegroundFocus";
 import { useRouter } from "expo-router";
 import { useUser } from "@/hooks/useUser";
 import { useSettingsStore } from "@/store/useSettingsStore";
-import { usePostHog, PostHogProvider } from 'posthog-react-native'
-import { Text } from "react-native";
+import { PostHogProvider } from 'posthog-react-native'
+import { useEffect } from "react";
+import { useCameraStore } from "@/store/useCameraStore";
 
 export default function RootLayout() {
 	const router = useRouter();
 	const { fetchUser } = useUser();
 
+	const setTakenPhotoUri = useCameraStore((state) => state.setTakenPhotoUri);
+
+	// This generally shouldn't be needed, but a good backup just incase
+	useEffect(() => {
+		setTakenPhotoUri(undefined);
+	});
 
 	useOnForegroundFocus(async () => {
 		const openToCamera = useSettingsStore.getState().openToCamera;
