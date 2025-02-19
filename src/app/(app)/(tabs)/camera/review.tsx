@@ -8,10 +8,12 @@ import LoadingSpinner from "@/components/loading-spinner";
 import { useCameraStore } from "@/store/useCameraStore";
 import { useRouter } from "expo-router";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { usePostHog } from "posthog-react-native";
 
 export default function ReviewScreen() {
 	const router = useRouter();
 	const settingsStore = useSettingsStore();
+	const posthog = usePostHog();
 
 	const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : Platform.OS === 'ios' ? process.env.EXPO_PUBLIC_REVIEW_BANNER_AD_IOS : process.env.EXPO_PUBLIC_REVIEW_BANNER_AD_ANDROID;
 
@@ -29,6 +31,7 @@ export default function ReviewScreen() {
 
 	const retakePhoto = () => {
 		setTakenPhotoUri(undefined);
+		posthog.capture("photo_deleted");
 		Toast.show({
 			type: 'success',
 			text1: 'Photo deleted.',
@@ -42,6 +45,7 @@ export default function ReviewScreen() {
 			await uploadPhoto(takenPhotoUri)
 			setTakenPhotoUri(undefined);
 			router.replace('/(app)/(tabs)/camera');
+			posthog.capture("photo_uploaded");
 			Toast.show({
 				type: 'success',
 				text1: 'Photo successfully uploaded!',
@@ -61,7 +65,9 @@ export default function ReviewScreen() {
 	const savePhoto = () => {
 		try {
 			addSavedPhoto(takenPhotoUri);
-			retakePhoto();
+			setTakenPhotoUri(undefined);
+			router.replace('/(app)/(tabs)/camera');
+			posthog.capture("photo_saved");
 			Toast.show({
 				type: 'success',
 				text1: 'Photo successfully saved!',
