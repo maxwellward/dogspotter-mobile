@@ -13,7 +13,7 @@ export default function ReviewScreen() {
 	const router = useRouter();
 	const settingsStore = useSettingsStore();
 
-	const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : Platform.OS === 'ios' ? process.env.REVIEW_BANNER_AD_IOS : process.env.REVIEW_BANNER_AD_ANDROID;
+	const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : Platform.OS === 'ios' ? process.env.EXPO_PUBLIC_REVIEW_BANNER_AD_IOS : process.env.EXPO_PUBLIC_REVIEW_BANNER_AD_ANDROID;
 
 	const [isUploading, setIsUploading] = useState(false);
 	const [takenPhotoUri] = useState<string>(useCameraStore((state) => state.takenPhotoUri));

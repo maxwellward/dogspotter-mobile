@@ -5,6 +5,8 @@ import { useOnForegroundFocus } from "@/hooks/useOnForegroundFocus";
 import { useRouter } from "expo-router";
 import { useUser } from "@/hooks/useUser";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { usePostHog, PostHogProvider } from 'posthog-react-native'
+import { Text } from "react-native";
 
 export default function RootLayout() {
 	const router = useRouter();
@@ -36,9 +38,13 @@ export default function RootLayout() {
 	}, true);
 
 	return (
-		<SessionProvider>
-			<Slot />
-			<StatusBar style="dark" />
-		</SessionProvider>
+		<PostHogProvider apiKey={process.env.EXPO_PUBLIC_POSTHOG_PUBLIC_API_KEY} options={{
+			host: 'https://us.i.posthog.com',
+		}}>
+			<SessionProvider>
+				<Slot />
+				<StatusBar style="dark" />
+			</SessionProvider>
+		</PostHogProvider>
 	);
 }

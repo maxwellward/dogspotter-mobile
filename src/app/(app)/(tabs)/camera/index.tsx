@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import { useCameraStore } from '@/store/useCameraStore';
 import { useRouter } from 'expo-router';
+import { usePostHog } from 'posthog-react-native';
 
 export default function CameraScreen() {
 	const [facing, setFacing] = useState<CameraType>('back');
@@ -20,6 +21,7 @@ export default function CameraScreen() {
 	const [takenPhotoUri] = useState<string | null>(useCameraStore((state) => state.takenPhotoUri));
 
 	const router = useRouter();
+	const posthog = usePostHog();
 
 	const setTakenPhotoUri = useCameraStore((state) => state.setTakenPhotoUri);
 
@@ -73,6 +75,7 @@ export default function CameraScreen() {
 					quality: 0.3,
 				});
 				if (photo) {
+					posthog.capture("photo_taken");
 					setTakenPhotoUri(photo.uri);
 					router.push('/(app)/(tabs)/camera/review');
 				}
