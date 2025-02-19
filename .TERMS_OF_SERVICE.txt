@@ -1,0 +1,45 @@
+Last Updated: February 12th, 2025
+
+Welcome to Dogspotter! These Terms and Conditions ("Terms") govern your use of the Dogspotter mobile application ("App"). By using the App, you agree to comply with these Terms. If you do not agree, please do not use the App.
+
+1. Eligibility
+
+You must be at least 13 years old to use Dogspotter. By using the App, you confirm that you meet this requirement.
+
+2. User-Generated Content
+
+- You retain ownership of any photos you upload but grant Dogspotter a non-exclusive, worldwide, royalty-free license to use, display, and distribute your content within the App.
+- You agree not to upload images that you do not have the right to share or that violate any laws.
+- Any inappropriate, offensive, or harmful content may be removed at our discretion.
+- Your images may be used for training an image classifier model, but you can opt out in the settings page.
+
+3. Points and Rewards
+
+- You earn points for uploading valid dog photos.
+- Points have no monetary value and cannot be redeemed for cash.
+- We reserve the right to modify or discontinue the points system at any time.
+
+4. Prohibited Activities
+
+By using Dogspotter, you agree not to:
+
+- Upload copyrighted content without permission.
+- Post misleading, fraudulent, or inappropriate content.
+- Use automated bots or scripts to manipulate the system.
+- Engage in harassment, spamming, or any other abusive behavior.
+
+5. Account Termination
+
+We reserve the right to suspend or terminate your account if you violate these Terms.
+
+6. Disclaimer and Limitation of Liability
+
+Dogspotter is provided "as is" without warranties of any kind. We are not responsible for any damages or losses resulting from your use of the App.
+
+7. Changes to Terms
+
+We may update these Terms from time to time. Your continued use of the App after changes means you accept the new Terms.
+
+8. Contact
+
+If you have questions about these Terms, contact us at max.jp.ward+dogspotter@gmail.com

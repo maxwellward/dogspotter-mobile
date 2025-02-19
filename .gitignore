@@ -1,7 +1,11 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+.env
 
 # dependencies
 node_modules/
+
+# Pocketbase
+pocketbase/pb_data
+pocketbase/pocketbase
 
 # Expo
 .expo/
@@ -10,6 +14,7 @@ web-build/
 expo-env.d.ts
 
 # Native
+*/ios/Pods
 *.orig.*
 *.jks
 *.p8
@@ -36,3 +41,5 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+.TODO.txt
