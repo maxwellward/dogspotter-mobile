@@ -45,6 +45,7 @@ export default function RootLayout() {
 	}, true);
 
 	return (
+		// This API key is public and as per Posthog documentation, can be shared as it only has write permissions.
 		<PostHogProvider apiKey={process.env.EXPO_PUBLIC_POSTHOG_PUBLIC_API_KEY} options={{
 			host: 'https://us.i.posthog.com',
 		}}>
