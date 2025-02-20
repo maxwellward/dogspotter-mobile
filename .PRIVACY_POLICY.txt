@@ -1,6 +1,6 @@
 Dogspotter Privacy Policy
 
-Last Updated: February 12th, 2025
+Last Updated: February 19th, 2025
 
 Privacy is a fundamental human right, and you deserve to be fully aware of what data is being collected from you, and how it's being used.
 
@@ -8,6 +8,7 @@ Privacy is a fundamental human right, and you deserve to be fully aware of what 
 We collect the following types of information:
 - Personal Information: When you create an account, we store your username, email address, password (we cannot read it), if you've agreed to our rules, and if you're opted-in to model training.
 - Uploaded Content: When you upload a photo, we strip its metadata and then store it on our servers. See section 2 of the terms of service for image ownership information (basically, you still own your image).
+- Basic Analytics: We use Posthog to collect information about what pages you navigate to in the app, and limited anonymised events such as when you take, save, or delete a Dogspotter photo.
 
 2. How We Use Your Information
 We use your information to:
@@ -30,7 +31,8 @@ We implement reasonable security measures to protect your information, but we ca
 
 5. Your Choices and Rights
 - You can update your account information within the App.
-- You can opt out of having your images used for training in the settings page.
+- You can opt-out of having your images used for training on the settings page.
+- You can opt-out of Posthog analytics tracking on the settings page.
 - You may request access to the personal data we hold about you by sending an email to max.jp.ward+dogspotter@gmail.com.
 - You may request deletion of your account and all accociated data by sending an email to max.jp.ward+dogspotter@gmail.com.
 

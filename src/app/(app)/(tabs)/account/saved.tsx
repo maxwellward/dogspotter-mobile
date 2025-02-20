@@ -7,6 +7,7 @@ import { useCameraStore } from "@/store/useCameraStore";
 
 export default function SavedScreen() {
 	const cameraStore = useCameraStore();
+
 	const [savedPhotos, setSavedPhotos] = useState<string[]>(cameraStore.savedPhotos);
 
 	useEffect(() => {

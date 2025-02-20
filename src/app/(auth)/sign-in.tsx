@@ -219,7 +219,7 @@ export default function AuthScreen() {
 				By continuing, you are confirming you understand and agree to our
 				<Text onPress={() => WebBrowser.openBrowserAsync('https://hastebin.com/share/jiwabumiya.sql')} style={{ fontWeight: 'bold', color: '#007bff' }}> terms of service</Text>
 				<Text> and </Text>
-				<Text onPress={() => WebBrowser.openBrowserAsync('https://hastebin.com/share/oyafijadiw.vbnet')} style={{ fontWeight: 'bold', color: '#007bff' }}>privacy policy</Text>
+				<Text onPress={() => WebBrowser.openBrowserAsync('https://hastebin.com/share/jafezudumi.vbnet')} style={{ fontWeight: 'bold', color: '#007bff' }}>privacy policy</Text>
 			</Text>}
 
 			<TouchableOpacity

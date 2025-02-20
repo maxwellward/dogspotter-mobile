@@ -5,12 +5,15 @@ import { useState } from "react";
 import Toast from "react-native-toast-message";
 import LoadingSpinner from "@/components/loading-spinner";
 import { useCameraStore } from "@/store/useCameraStore";
+import { usePostHog } from "posthog-react-native";
 
 export type Props = {
 	photoUri: string;
 };
 
 export default function SavedPhoto(props: Props) {
+	const posthog = usePostHog();
+
 	const [isUploading, setIsUploading] = useState(false);
 
 	const removeSavedPhoto = useCameraStore((state) => state.removeSavedPhoto);
@@ -45,6 +48,7 @@ export default function SavedPhoto(props: Props) {
 
 	const removePhoto = () => {
 		removeSavedPhoto(props.photoUri);
+		posthog.capture("saved_photo_deleted");
 		Toast.show({
 			type: 'success',
 			text1: 'Photo successfully deleted!',
@@ -56,6 +60,9 @@ export default function SavedPhoto(props: Props) {
 		try {
 			await uploadPhoto(props.photoUri);
 			removeSavedPhoto(props.photoUri);
+			console.log('caputring evet s');
+
+			posthog.capture("saved_photo_uploaded");
 			Toast.show({
 				type: 'success',
 				text1: 'Photo successfully uploaded!',
