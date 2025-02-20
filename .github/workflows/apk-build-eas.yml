@@ -34,4 +34,4 @@ jobs:
           cat .env
 
       - name: 🚀 Build app
-        run: eas build -p android --profile preview --non-interactive
+        run: eas build -p android --profile preview --non-interactive --no-wait
