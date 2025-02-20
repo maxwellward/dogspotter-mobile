@@ -15,6 +15,7 @@ export default function Settings() {
 	const [openToCamera, setOpenToCamera] = useState<boolean>(settingsStore.openToCamera);
 	const [showAdvertisements, setShowAdvertisements] = useState<boolean>(settingsStore.showAdvertisements);
 	const [allowModelTraining, setAllowModelTraining] = useState<boolean>(settingsStore.allowModelTraining);
+	const [allowAnalytics, setAllowAnalytics] = useState<boolean>(settingsStore.allowAnalytics);
 	const [email, setEmail] = useState<string | undefined>(undefined);
 
 	useEffect(() => {
@@ -26,6 +27,7 @@ export default function Settings() {
 		setOpenToCamera(settingsStore.openToCamera);
 		setShowAdvertisements(settingsStore.showAdvertisements);
 		setAllowModelTraining(settingsStore.allowModelTraining);
+		setAllowAnalytics(settingsStore.allowAnalytics);
 	}, [settingsStore, fetchUser]);
 
 	const changePassword = () => {
@@ -80,6 +82,7 @@ export default function Settings() {
 			<CheckboxComponent text="Open to Camera" value={openToCamera} onChange={(state) => settingsStore.setOpenToCamera(state)} />
 			<CheckboxComponent text="Show Advertisements" value={showAdvertisements} onChange={(state) => settingsStore.setShowAdvertisements(state)} />
 			<CheckboxComponent text="Allow Model Training" value={allowModelTraining} onChange={(state) => toggleModelTraining(state)} />
+			<CheckboxComponent text="Allow Analytics" value={allowAnalytics} onChange={(state) => settingsStore.setAllowAnalytics(state)} />
 			<Text style={styles.header}>Account</Text>
 			<View style={styles.accountSettings}>
 				<TouchableOpacity onPress={changePassword}>
