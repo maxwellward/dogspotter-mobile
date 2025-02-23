@@ -25,13 +25,13 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: 'Create env file'
-        run: |
-          touch .env
-          echo EXPO_PUBLIC_REVIEW_BANNER_AD_IOS="${{ vars.EXPO_PUBLIC_REVIEW_BANNER_AD_IOS }}" >> .env
-          echo EXPO_PUBLIC_REVIEW_BANNER_AD_ANDROID="${{ vars.EXPO_PUBLIC_REVIEW_BANNER_AD_ANDROID }}" >> .env
-          echo EXPO_PUBLIC_POSTHOG_PUBLIC_API_KEY="${{ vars.EXPO_PUBLIC_POSTHOG_PUBLIC_API_KEY }}" >> .env
-          cat .env
+      # - name: 'Create env file'
+      #   run: |
+      #     touch .env
+      #     echo EXPO_PUBLIC_REVIEW_BANNER_AD_IOS="${{ vars.EXPO_PUBLIC_REVIEW_BANNER_AD_IOS }}" >> .env
+      #     echo EXPO_PUBLIC_REVIEW_BANNER_AD_ANDROID="${{ vars.EXPO_PUBLIC_REVIEW_BANNER_AD_ANDROID }}" >> .env
+      #     echo EXPO_PUBLIC_POSTHOG_PUBLIC_API_KEY="${{ vars.EXPO_PUBLIC_POSTHOG_PUBLIC_API_KEY }}" >> .env
+      #     cat .env
 
       - name: 🚀 Build app
         run: eas build -p android --profile preview --non-interactive --no-wait
