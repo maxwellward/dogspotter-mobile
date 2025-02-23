@@ -15,7 +15,10 @@ export default function ReviewScreen() {
 	const settingsStore = useSettingsStore();
 	const posthog = usePostHog();
 
-	const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : Platform.OS === 'ios' ? process.env.EXPO_PUBLIC_REVIEW_BANNER_AD_IOS : process.env.EXPO_PUBLIC_REVIEW_BANNER_AD_ANDROID;
+	const androidAdUnitId = 'ca-app-pub-4490389369910848/2604903062';
+	const iosAdUnitId = 'ca-app-pub-4490389369910848/4535187557';
+
+	const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : Platform.OS === 'ios' ? iosAdUnitId : androidAdUnitId;
 
 	const [isUploading, setIsUploading] = useState(false);
 	const [takenPhotoUri] = useState<string>(useCameraStore((state) => state.takenPhotoUri));
