@@ -45,7 +45,7 @@ export default function RootLayout() {
 	}, true);
 
 	return (
-		<PostHogProvider apiKey={'phc_v52HDL2ssg30ccFtg7aOv7p8OO3H8DkCoIR3OTXMENt'} options={{
+		<PostHogProvider apiKey='phc_v52HDL2ssg30ccFtg7aOv7p8OO3H8DkCoIR3OTXMENt' options={{
 			host: 'https://us.i.posthog.com',
 		}}>
 			<SessionProvider>
