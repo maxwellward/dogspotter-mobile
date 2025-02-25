@@ -1,5 +1,6 @@
 import { Text, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Carousel from "@/components/carousel";
 
 export default function HomeScreen() {
 	return (
@@ -20,6 +21,9 @@ export default function HomeScreen() {
 					<Text style={{ fontWeight: 'bold' }}>Climb the ranks. </Text>
 					<Text>With each point you gain, you’re closer to taking the #1 spot on the leaderboard and obtaining the ultimate bragging rights.</Text>
 				</Text>
+			</View>
+			<View style={{ marginTop: 24 }}>
+				<Carousel />
 			</View>
 		</SafeAreaView>
 	);
