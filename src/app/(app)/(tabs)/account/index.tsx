@@ -43,11 +43,16 @@ export default function AccountScreen() {
 
 				setLoadingPoints(false);
 
-				const u = await fetchUser();
-				if (u) {
-					setUsername(u?.username);
-				}
+				console.log(1);
 
+				try {
+					const u = await fetchUser();
+					if (u) {
+						setUsername(u?.username);
+					}
+				} catch (error) {
+					console.error(error);
+				}
 			}
 			fetchData();
 		});

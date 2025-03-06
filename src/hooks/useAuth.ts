@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import pb from "@/lib/pocketbase";
-import { PocketbaseUserRecord } from "@/hooks/useUser";
+import { User } from "@/hooks/useUser";
+import * as SecureStore from 'expo-secure-store';
 
 export function useAuth() {
 	const [isAuthenticated, setIsAuthenticated] = useState(pb.authStore.isValid);
@@ -13,23 +14,21 @@ export function useAuth() {
 		pb.authStore.onChange(handleAuthChange);
 	}, []);
 
-	const login = async (email: string, password: string): Promise<PocketbaseUserRecord> => {
+	const login = async (email: string, password: string): Promise<User> => {
 		const { token, record } = await pb.collection('users').authWithPassword(email.toLowerCase(), password);
 		setIsAuthenticated(true);
 
 		return {
 			token,
-			record: {
-				id: record.id,
-				created: record.created,
-				updated: record.updated,
-				email: record.email,
-				username: record.username,
-				verified: record.verified,
-				agreedToRules: record.agreedToRules,
-				modelTrainingAllowed: record.modelTrainingAllowed,
-				totalPoints: record.totalPoints,
-			},
+			id: record.id,
+			created: record.created,
+			updated: record.updated,
+			email: record.email,
+			username: record.username,
+			verified: record.verified,
+			agreedToRules: record.agreedToRules,
+			modelTrainingAllowed: record.modelTrainingAllowed,
+			totalPoints: record.totalPoints,
 		};
 	}
 
@@ -59,6 +58,7 @@ export function useAuth() {
 	const logout = async () => {
 		pb.authStore.clear();
 		setIsAuthenticated(false);
+		await SecureStore.deleteItemAsync('session');
 	};
 
 	return { isAuthenticated, login, register, reauthenticate, logout };

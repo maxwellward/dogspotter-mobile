@@ -1,9 +1,9 @@
-import { useContext, createContext, type PropsWithChildren, useState } from "react";
+import { useContext, createContext, type PropsWithChildren } from "react";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/hooks/useAuth";
 import * as SecureStore from 'expo-secure-store';
-import { PocketbaseUserRecord } from "@/hooks/useUser";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { User } from "@/hooks/useUser";
 
 const AuthContext = createContext<{
 	signIn: (email: string, password: string) => void;
@@ -39,21 +39,21 @@ export function SessionProvider({ children }: PropsWithChildren) {
 		<AuthContext.Provider
 			value={{
 				signIn: async (email, password) => {
-					const response: PocketbaseUserRecord = await login(email, password);
-					await SecureStore.setItemAsync('session', JSON.stringify({ token: response.token, record: response.record }));
+					const response: User = await login(email, password);
+					await SecureStore.setItemAsync('session', JSON.stringify({ token: response.token, record: response }));
 
-					if (response.record.modelTrainingAllowed) {
+					if (response.modelTrainingAllowed) {
 						setAllowModelTraining(true, true);
 					} else {
 						setAllowModelTraining(false, true);
 					}
 
-					if (!response.record.verified) {
+					if (!response.verified) {
 						router.replace('/(auth)/verify')
 						return;
 					}
 
-					if (!response.record.agreedToRules) {
+					if (!response.agreedToRules) {
 						router.replace('/(auth)/rules')
 						return;
 					}
@@ -62,7 +62,6 @@ export function SessionProvider({ children }: PropsWithChildren) {
 				},
 				signOut: async () => {
 					await logout();
-					await SecureStore.deleteItemAsync('session');
 					router.replace('/(auth)/sign-in');
 				},
 				signUp: async (username, email, password) => {
