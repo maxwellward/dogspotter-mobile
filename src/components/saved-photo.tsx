@@ -60,7 +60,6 @@ export default function SavedPhoto(props: Props) {
 		try {
 			await uploadPhoto(props.photoUri);
 			removeSavedPhoto(props.photoUri);
-			console.log('caputring evet s');
 
 			posthog.capture("saved_photo_uploaded");
 			Toast.show({

@@ -43,8 +43,6 @@ export default function AccountScreen() {
 
 				setLoadingPoints(false);
 
-				console.log(1);
-
 				try {
 					const u = await fetchUser();
 					if (u) {
